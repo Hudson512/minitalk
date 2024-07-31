@@ -158,7 +158,39 @@ funções:
 	Funcionamento
 		A função getpid não toma nenhum argumento e retorna o PID do processo chamador.
 
+11-pause
+	A função pause em C é usada para fazer com que o processo atual pause sua execução até que receba um sinal. Quando um sinal é recebido e o processo tem um manipulador de sinal registrado para esse sinal, o manipulador de sinal é executado. Depois que o manipulador de sinal termina, a função pause retorna.
 
+	Biblioteca
+		A função pause está definida na biblioteca <unistd.h>.
+	Protótipo
+		int pause(void);
+	Retorno
+		Pause sempre retorna -1 e define errno como EINTR quando o processo é interrompido por um sinal que tem um manipulador de sinal registrado.
+
+12-sleep
+	A função sleep em C é usada para suspender a execução do processo atual por um número específico de segundos. Esta função é útil quando você deseja introduzir uma pausa no seu programa, por exemplo, para esperar por um determinado período antes de continuar a execução.
+
+	Biblioteca
+		A função sleep está definida na biblioteca <unistd.h>.
+	Protótipo
+		unsigned int sleep(unsigned int seconds);
+	Funcionamento
+		seconds: O número de segundos que o processo deve dormir.
+	Retorno 
+		A função retorna o número de segundos restantes se o sono foi interrompido por um sinal, ou zero se o sono foi completado sem interrupções.
+
+13-usleep
+	A função usleep em C é usada para suspender a execução do processo atual por um número especificado de microsegundos. Esta função é útil quando você precisa de uma pausa mais curta e precisa de uma precisão maior do que a oferecida pela função sleep.
+
+	Biblioteca
+		A função usleep está definida na biblioteca <unistd.h>.
+	Protótipo
+		int usleep(useconds_t usec);
+	Funcionamento
+		usec: O número de microsegundos para suspender a execução do processo.
+	Retorno
+		A função retorna 0 se a suspensão foi bem-sucedida, ou -1 em caso de erro (com errno definido apropriadamente).
 ---------------------------------------------------------------------------------------
 							PID - PROCESS ID
 ---------------------------------------------------------------------------------------
