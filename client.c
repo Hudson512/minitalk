@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 11:58:19 by hmateque          #+#    #+#             */
-/*   Updated: 2024/08/01 17:03:50 by hmateque         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:12:59 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	g_response = 0;
 
 void	await_reponse(int bit)
 {
-	bit = 0;
+	(void)bit;
 	g_response = 1;
 }
 
@@ -75,6 +75,5 @@ int	main(int argc, char **agv)
 			send_sinal(atoi(agv[1]), agv[2][i]);
 		send_sinal(atoi(agv[1]), '\0');
 	}
-
 	return (0);
 }

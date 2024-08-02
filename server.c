@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:36:33 by hmateque          #+#    #+#             */
-/*   Updated: 2024/08/01 16:56:33 by hmateque         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:15:21 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	receive_pid(int signal, siginfo_t *info, void *context)
 	static int	i = 0;
 	static char c = 0;
 
+	(void)context;
 	i++;
 	c = c << 1;
 	if (signal == SIGUSR1)
@@ -41,7 +42,7 @@ int	main(void)
 	sigemptyset(&s.sa_mask);
 	sigaction(SIGUSR1, &s, NULL);
 	sigaction(SIGUSR2, &s, NULL);
-	printf("My Server PID: %d\n", getpid());
+	ft_printf("My Server PID: %d\n", getpid());
 	while (1)
 		pause();
 	return (0);
