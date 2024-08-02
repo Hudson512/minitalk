@@ -1,0 +1,15 @@
+Parte obrigatória
+Você deve criar um programa de comunicação na forma de um cliente e um servidor.
+• O servidor deve ser iniciado primeiro. Após seu lançamento, ele deve imprimir seu PID.
+• O cliente recebe dois parâmetros:
+	◦ O PID do servidor.
+	◦ A string a ser enviada.
+• O cliente deve enviar a string passada como parâmetro para o servidor.
+Uma vez que a string tenha sido recebida, o servidor deve imprimi-la.
+• O servidor deve exibir a string bem rápido. Rapidamente significa que se você acha
+que demora muito, então provavelmente é muito longo.
+Seu servidor deve ser capaz de receber strings de vários clientes em uma linha sem
+precisar reiniciar.
+• A comunicação entre seu cliente e seu servidor deve ser feita apenas usando
+sinais UNIX.
+• Você pode usar apenas estes dois sinais: SIGUSR1 e SIGUSR2.

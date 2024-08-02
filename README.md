@@ -1,4 +1,4 @@
-# minitalk
+minitalk
 Um sistema simples de comunicação cliente-servidor
 
 -------------------------------------------------------------------------------------
@@ -194,7 +194,9 @@ funções:
 ---------------------------------------------------------------------------------------
 							PID - PROCESS ID
 ---------------------------------------------------------------------------------------
+
 Para ver o PID (Process ID) de um processo em sistemas Unix-like, como Linux, você pode usar várias ferramentas de linha de comando. Aqui estão alguns métodos comuns:
+
 1. Usando ps
 	O comando ps exibe informações sobre processos em execução. Aqui estão alguns exemplos de como usá-lo:
 
@@ -207,3 +209,17 @@ Para ver o PID (Process ID) de um processo em sistemas Unix-like, como Linux, vo
 	Exibir processos em formato detalhado
 		> ps aux
 			Este comando fornece uma visão detalhada de todos os processos, incluindo informações como o usuário proprietário, uso de memória e CPU, tempo de execução, e o comando completo.
+
+---------------------------------------------------------------------------------------
+							SIGUSR1 e SIGUSR2
+---------------------------------------------------------------------------------------
+
+2.	SIGUSR1 e SIGUSR2.
+	Os sinais SIGUSR1 e SIGUSR2, assim como outros sinais padrão em sistemas Unix-like, estão definidos na biblioteca <signal.h>. Eles são fornecidos para que os programas possam implementar sinais personalizados para qualquer propósito que desejem.
+	Ao contrário de sinais como SIGINT ou SIGTERM, que têm significados específicos, SIGUSR1 e SIGUSR2 não têm comportamento predefinido e são livres para uso pelo programador.
+
+	Definições
+		SIGUSR1: Sinal número 10 em muitos sistemas (mas isso pode variar).
+		SIGUSR2: Sinal número 12 em muitos sistemas (mas isso pode variar).
+	Propósito
+		Os sinais SIGUSR1 e SIGUSR2 são projetados para permitir que os aplicativos definam suas próprias condições de sinalização sem interferir nos sinais padrão. Eles podem ser usados para qualquer propósito que um desenvolvedor desejar.
