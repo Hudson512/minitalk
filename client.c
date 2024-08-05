@@ -6,13 +6,13 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 11:58:19 by hmateque          #+#    #+#             */
-/*   Updated: 2024/08/02 12:12:59 by hmateque         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:21:44 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static int	g_response = 0;
+static int	g_response;
 
 void	await_reponse(int bit)
 {
@@ -54,9 +54,21 @@ void	send_sinal(int pid, char c)
 	while (count--)
 	{
 		if (c >> count & 1)
-			kill(pid, SIGUSR1);
+		{
+			if (kill(pid, SIGUSR1) == -1)
+			{
+				ft_printf("CLIENT ERROR: PID NO FOUND\n");
+				exit(1);
+			}
+		}
 		else
-			kill(pid, SIGUSR2);
+		{
+			if (kill(pid, SIGUSR2) == -1)
+			{
+				ft_printf("CLIENT ERROR: PID NO FOUND\n");
+				exit(1);
+			}	
+		}
 		while(g_response == 0 || usleep(50))
 			;
 		g_response = 0;
@@ -66,14 +78,16 @@ void	send_sinal(int pid, char c)
 int	main(int argc, char **agv)
 {
 	int	i;
-
+	
 	i = -1;
 	if (argc == 3)
 	{
 		signal(SIGUSR1, &await_reponse);
 		while (agv[2][++i])
-			send_sinal(atoi(agv[1]), agv[2][i]);
+			send_sinal(ft_atoi(agv[1]), agv[2][i]);
 		send_sinal(atoi(agv[1]), '\0');
 	}
+	else
+		ft_printf("Error ARGUMENT: ./client <PID> <argument>\n");
 	return (0);
 }

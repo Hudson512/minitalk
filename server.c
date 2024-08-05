@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:36:33 by hmateque          #+#    #+#             */
-/*   Updated: 2024/08/02 12:15:21 by hmateque         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:22:01 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	receive_pid(int signal, siginfo_t *info, void *context)
 {
-	static int	i = 0;
-	static char c = 0;
+	static int	i;
+	static char c;
 
 	(void)context;
 	i++;
@@ -30,7 +30,12 @@ void	receive_pid(int signal, siginfo_t *info, void *context)
 		i = 0;
 		c = 0;
 	}
-	kill(info->si_pid, SIGUSR1);
+	if (kill(info->si_pid, SIGUSR1) == -1)
+	{
+		ft_printf("Client error: PID NO FOUND\n");
+		i = 0;
+		c = 0;
+	}
 }
 
 int	main(void)
